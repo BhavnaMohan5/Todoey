@@ -13,7 +13,7 @@ class TodoListViewController: UITableViewController{
     var itemArray = [Item]()
     
      let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-     let predicate = NSPredicate(format : "title CONTAINS[cd] %@",searchBar.text!)
+//     let predicate = NSPredicate(format : "title CONTAINS[cd] %@",searchBar.text!)
     var selectedCategory : Category?
     {
         didSet
@@ -125,7 +125,7 @@ class TodoListViewController: UITableViewController{
         request.predicate = categoryPredicate
         }
         
-        request.predicate = compoundPredicate
+//        request.predicate = compoundPredicate
         do
         {
             itemArray = try context.fetch(request)
