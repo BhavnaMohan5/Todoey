@@ -7,9 +7,10 @@
 //
 
 import UIKit
-//import CoreData
 import RealmSwift
-class CategoryViewController: UITableViewController {
+import ChameleonFramework
+
+class CategoryViewController: SwipeTableViewController {
 
     var CategoryArray : Results<Category>?
    // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -18,8 +19,9 @@ class CategoryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         loadItems()
+        tableView.separatorStyle = .none
         //MARK : TableView DataSource Methods
         
         //MARK : Data Manipulation Methods load data n save data
@@ -41,10 +43,13 @@ class CategoryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CategoryArray?.count ?? 1
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell",for : indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = CategoryArray?[indexPath.row].name ?? "No categories added yet"
-       // cell.textLabel?.text = item.name
+        cell.backgroundColor = UIColor.randomFlat
+       // cell.backgroundColor = UIColor.randomFlat.hexValue()
+      //  cell.background = UIColor(hexString : "")
         return cell
         }
     
@@ -90,20 +95,18 @@ class CategoryViewController: UITableViewController {
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        
     }
         func saveItems(with category : Category)
         {
-            
-            do
-            {
+            do{
                 try realm.write {
                     realm.add(category)
                 }
-            }
-            catch
-            {
+            }catch{
                 print("Error saving data to realm,\(error)")
             }
+            tableView.reloadData()
         }
         
         func loadItems()
@@ -111,4 +114,19 @@ class CategoryViewController: UITableViewController {
             CategoryArray = realm.objects(Category.self)
              tableView.reloadData()
         }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let categoryForDeletion = self.CategoryArray?[indexPath.row]
+        {
+            do {
+                try self.realm.write {
+                    self.realm.delete(categoryForDeletion)
+                }
+            }catch{
+                print("Error deleting category, \(error)")
+            }
+        }
+    }
+    
+    
     }

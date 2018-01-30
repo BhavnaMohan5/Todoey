@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF314831675D4AE81A6ABF6D /* Pods_Todoey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8CB42784A3A8632E24B249 /* Pods_Todoey.framework */; };
+		FB84632C2014E15200A00C94 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB84632B2014E15200A00C94 /* SwipeTableViewController.swift */; };
 		FB84F6421FEFC2AB00A6F971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB84F6411FEFC2AB00A6F971 /* AppDelegate.swift */; };
 		FB84F6441FEFC2AB00A6F971 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB84F6431FEFC2AB00A6F971 /* TodoListViewController.swift */; };
 		FB84F6471FEFC2AB00A6F971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB84F6451FEFC2AB00A6F971 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		1CE2B9F56C52207738033675 /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
 		CD8CB42784A3A8632E24B249 /* Pods_Todoey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E389C31ED2EE901604785D71 /* Pods-Todoey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Todoey/Pods-Todoey.debug.xcconfig"; sourceTree = "<group>"; };
+		FB84632B2014E15200A00C94 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		FB84F63E1FEFC2AB00A6F971 /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB84F6411FEFC2AB00A6F971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB84F6431FEFC2AB00A6F971 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				FBC6DC4E200A1E2600DECF13 /* CategoryViewController.swift */,
+				FB84632B2014E15200A00C94 /* SwipeTableViewController.swift */,
 				FB84F6431FEFC2AB00A6F971 /* TodoListViewController.swift */,
 			);
 			path = Controller;
@@ -228,13 +231,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todoey/Pods-Todoey-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -266,6 +273,7 @@
 				FBC6DC4F200A1E2600DECF13 /* CategoryViewController.swift in Sources */,
 				FBA5AF12200BC67B00A37633 /* Data.swift in Sources */,
 				FB84F6441FEFC2AB00A6F971 /* TodoListViewController.swift in Sources */,
+				FB84632C2014E15200A00C94 /* SwipeTableViewController.swift in Sources */,
 				FBA5AF14200BCC6500A37633 /* Item.swift in Sources */,
 				FB84F6421FEFC2AB00A6F971 /* AppDelegate.swift in Sources */,
 				FBA5AF1A200BCCB700A37633 /* Category.swift in Sources */,
@@ -409,6 +417,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5C6Z6CJES9;
 				INFOPLIST_FILE = Todoey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BhavnaMohan.Todoey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5C6Z6CJES9;
 				INFOPLIST_FILE = Todoey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.BhavnaMohan.Todoey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
