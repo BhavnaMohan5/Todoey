@@ -21,35 +21,26 @@ class CategoryViewController: SwipeTableViewController {
         super.viewDidLoad()
        
         loadItems()
-        tableView.separatorStyle = .none
-        //MARK : TableView DataSource Methods
-        
-        //MARK : Data Manipulation Methods load data n save data
-        
-        //MARK : Add New Category
-
+       // tableView.separatorStyle = .none
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 0
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(CategoryArray?.count)
         return CategoryArray?.count ?? 1
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell     {
+        print("Inside cell for row at")
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         cell.textLabel?.text = CategoryArray?[indexPath.row].name ?? "No categories added yet"
-        cell.backgroundColor = UIColor.randomFlat
-       // cell.backgroundColor = UIColor.randomFlat.hexValue()
-      //  cell.background = UIColor(hexString : "")
+        print(cell.textLabel?.text)
+        cell.backgroundColor = UIColor(hexString : CategoryArray?[indexPath.row].color ?? "1D98F6")
         return cell
         }
     
@@ -67,7 +58,7 @@ class CategoryViewController: SwipeTableViewController {
     }
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
+        print("In add")
         var textFiled = UITextField()
         let alert = UIAlertController(title : "Add a new Category",message : "",preferredStyle:.alert)
         let action = UIAlertAction(title : "Add", style : .default) { (action) in
@@ -77,13 +68,9 @@ class CategoryViewController: SwipeTableViewController {
             
             let newCategory = Category()
             newCategory.name = textFiled.text!
-            //newItem.name = textFiled.text!
-            //self.CategoryArray.append(newItem)
-            //self.defaults.set(self.itemArray, forKey: "ToDoListArray")
+            newCategory.color = UIColor.randomFlat.hexValue()
             
-           // self.CategoryArray.append(newCategory)
             self.saveItems(with: newCategory)
-            
             
             self.tableView.reloadData()
         }
